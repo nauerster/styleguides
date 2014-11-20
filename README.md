@@ -1,5 +1,5 @@
-#Styleguides
-****
+##Styleguides
+
 
 ###[HTML](https://github.com/nauerster/styleguides/blob/master/code/HTML.md)
 In progress...
