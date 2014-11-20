@@ -104,6 +104,8 @@ You should only give elements an ID attribute if they are unique. They should be
 ###Naming Conventions
 When assigning a class or id to a selector, name it based off the nature of what it is, rather than by what it looks like.
 
+See [CSS Styleguide](https://github.com/nauerster/styleguides/blob/master/code/CSS.md) for a more in depth look into proper naming conventions.
+
 **Meaningful**...
 
 `<p class="note-text"></p>`
