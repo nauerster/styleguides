@@ -3,7 +3,6 @@
 The main objective of this document is to expose some of today's Best Practices, and introduce techniques that will keep your code Consistent, Organized, and of course - Scalable.
 
 
-<br />
 ###Codeing style
 ****
 
