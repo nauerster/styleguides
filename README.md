@@ -1,5 +1,6 @@
 ##Styleguides
 
+_Disclaimer: This is an evolving project_
 
 ###[HTML](https://github.com/nauerster/styleguides/blob/master/code/HTML.md)
 In progress...

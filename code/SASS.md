@@ -1,10 +1,7 @@
-## Overview
+##SASS
 
-#####The main objective of this document is to ensure our code is...
-- Organized
-- Consistent
-- Scalable
-- And follows Best Practices
+The main objective of this document is to expose some of today's Best Practices as well as introduce techniques that will keep your code Consistent, Organized, and of course - Scalable.
+
 
 
 <br />
