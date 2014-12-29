@@ -70,6 +70,7 @@ In some ways, ** BEM ** is similar to ** OOP ** `(Object-Oriented Programming)`.
 CSS class for an element is a `block name` and an `element name` separated by a hyphen.
 
 ```
+
 // block
 .menu
 
@@ -131,47 +132,60 @@ See [Styleguides](https://github.com/nauerster/styleguides) for more on Sass.
 
 **Formatting your selectors:**
 
-	.notSoGood {}
-	
-	.this-is-better {}
+```
 
+.notSoGood {}
+	
+.this-is-better {}
+
+```
 
 **Example of good basic formatting practices:**
 
-	.styleguide-format {
-  		color: #000;
-  		background-color: #000
-  		border: 1px solid #0F0;
-	}
 
+```
+
+.styleguide-format {
+	color: #000;
+	background-color: #000;
+	border: 1px solid #0F0;
+}
+
+```
 
 **Example of individual selectors getting their own lines:**
 
-	.multiple,
-	.classes,
-	.get-new-lines {
-  		display: block;
-	}
-	
-	or
-	
-	.multiple:before, .multiple:after
-	.classes:before, classes:after
-	.get-new-lines:before, get-new-lines:after {
-  		display: block;
-	}
 
+```
+
+.multiple,
+.classes,
+.get-new-lines {
+	display: block;
+}
+
+or
+
+.multiple:before, .multiple:after
+.classes:before, classes:after
+.get-new-lines:before, get-new-lines:after {
+	display: block;
+}
+
+```
 
 **Avoid unnecessary shorthand declarations:**
 
-	.not-so-good {
-  		margin: 0 0 20px;
-	}
-	.good {
-  		margin-bottom: 20px;
-	}
+```
 
+.not-so-good {
+	margin: 0 0 20px;
+}
+.good {
+	margin-bottom: 20px;
+}
 
+```
 
 ### Specificity (classes vs. ids)
 
@@ -183,27 +197,31 @@ Elements that occur exactly once inside a page should use IDs, otherwise, use cl
 
 When styling a component, start with an element + class namespace (prefer class names over ids), prefer direct descendant selectors by default, and use as little specificity as possible.
 
-Example:
+**Example:**
 
-	<ul class="category-list">
-  		<li class="item">Category 1</li>
-  		<li class="item">Category 2</li>
-  		<li class="item">Category 3</li>
-	</ul>
-	
-	.category-list {}
+```
 
-  	// Direct descendant selector > for list items
-  	.category-list > li {
-    	list-style-type: disc;
-  	}
+<ul class="category-list">
+	<li class="item">Category 1</li>
+	<li class="item">Category 2</li>
+	<li class="item">Category 3</li>
+</ul>
 
-  	// Minimal specificity for all links
-  	.category-list > li a {
-  		color: #F00;
-  	}
+.category-list {}
 
+// Direct descendant selector > for list items
 
+.category-list > li {
+	list-style-type: disc;
+}
+
+// Minimal specificity for all links
+
+.category-list > li a {
+	color: #F00;
+}
+
+```
 
 ## Credits:
 
