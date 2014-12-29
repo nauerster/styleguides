@@ -1,12 +1,12 @@
-##CSS
+# CSS
 
 The main objective of this document is to expose some of today's Best Practices as well as introduce techniques that will keep your code Consistent, Organized, and of course - Scalable.
 
 
-###Codeing style
-****
+## Codeing style
 
-#####Spacing
+
+#### Spacing
 
 - Use soft-tabs with a two space indent.
 - Put spaces after : in property declarations.
@@ -17,7 +17,7 @@ The main objective of this document is to expose some of today's Best Practices 
 - Place closing braces of declaration blocks on a new line.
 - Each declaration should appear on its own line for more accurate error reporting.
 
-#####Formatting
+#### Formatting
 
 - Use hex color codes #000 unless using rgba().
 - Use // for comment blocks (instead of /\* comment */).
@@ -25,10 +25,11 @@ The main objective of this document is to expose some of today's Best Practices 
 - Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values.
 - As a rule of thumb, avoid unnecessary nesting in SASS/SCSS. At most, aim for three levels. If you cannot help it, step back and rethink your overall strategy (either the specificity needed, or the layout of the nesting).
 
-<br />
+
 **Quick Example:** More Below
 
 ```
+
 .menu {
   width: 200px;
   height: auto;
@@ -38,26 +39,23 @@ The main objective of this document is to expose some of today's Best Practices 
   height: 30px;
 }
 
+
 ```
 
-<br />
 
-###Naming Conventions
-****
+### Naming Conventions
 
-When choosing class names, I've found the [BEM](http://bem.info/method/definitions/) methodology to be the most intuitive, and easy to communicate to other team members.
+Follow the [BEM](http://bem.info/method/definitions/) methodology.
 
+#### BEM:
+Allows developers to create a simple naming convention helping make your CSS more modular and portable.
 
-**BEM:**
+- Block: `the 'thing' - like a .menu`
+- Element: `a child of the block - like .menu-item`
+- Modifier: `a variation of the 'thing' - like .menu-vertical`
 
-- Block
-- Element
-- Modifier
+In some ways, ** BEM ** is similar to ** OOP ** `(Object-Oriented Programming)`. It's a way of describing reality in code, a range of `patterns`, and a way of thinking about program entities regardless of programming languages being used.
 
-
-In some ways, **BEM** is similar to **OOP** `(Object-Oriented Programming)`. It's a way of describing reality in code, a range of `patterns`, and a way of thinking about program entities regardless of programming languages being used.
-
-<br />
 **What constitutes BEM?**
 
 - **Block:** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
@@ -66,28 +64,70 @@ In some ways, **BEM** is similar to **OOP** `(Object-Oriented Programming)`. It'
 
 - **Modifier:** A `modifier` is a property of a block or an element that alters its look or behavior.
 
-<br />
+
 **Example:**
 
 CSS class for an element is a `block name` and an `element name` separated by a hyphen.
 
 ```
-//block
+// block
 .menu
 
-//element
+// element
 .menu-item
 
-//modifier
-.menu-item-list or .menu-item-tabbed or .menu-item-pill
+// modifier
+.menu-list or menu-tabbed
+
+
+// In Sass you could write:
+// ===========================================
+
+.menu
+	width: 100%
+	
+	.menu-item
+		color: #8A8A8A
+		
+	&-list
+		.menu-item
+			color: #F89406
+			
+	&-tabbed
+		.menu-item
+			color: #D15B47
+		
+		
+		
+// Which would print:
+// ===========================================
+
+.menu {
+  width: 100%;
+}
+
+.menu .menu-item {
+  color: #8A8A8A;
+}
+
+.menu-list .menu-item {
+  color: #F89406;
+}
+
+.menu-tabbed .menu-item {
+  color: #D15B47;
+}
+
+
 
 ```
 
+See [Styleguides](https://github.com/nauerster/styleguides) for more on Sass.
 
-<br />
 
-###Basic Formatting Examples
-****
+
+### Basic Formatting Examples
+
 
 **Formatting your selectors:**
 
@@ -100,11 +140,11 @@ CSS class for an element is a `block name` and an `element name` separated by a 
 
 	.styleguide-format {
   		color: #000;
-  		background-color: rgba(0, 0, 0, .5);
-  		border: 1px solid #0f0;
+  		background-color: #000
+  		border: 1px solid #0F0;
 	}
 
-<br />
+
 **Example of individual selectors getting their own lines:**
 
 	.multiple,
@@ -121,7 +161,7 @@ CSS class for an element is a `block name` and an `element name` separated by a 
   		display: block;
 	}
 
-<br />
+
 **Avoid unnecessary shorthand declarations:**
 
 	.not-so-good {
@@ -132,9 +172,9 @@ CSS class for an element is a `block name` and an `element name` separated by a 
 	}
 
 
-<br />
-###Specificity (classes vs. ids)
-****
+
+### Specificity (classes vs. ids)
+
 
 Elements that occur exactly once inside a page should use IDs, otherwise, use classes. When in doubt, use a class name.
 
@@ -160,15 +200,13 @@ Example:
 
   	// Minimal specificity for all links
   	.category-list > li a {
-  		color: #f00;
+  		color: #F00;
   	}
 
-<br />
 
 
-****
-Credits:
+## Credits:
 
-- BEM [Crew](http://bem.info/authors/)
-- Jonathan Snook (Author of SMACSS)
-- Github CSS Styleguide
+- [BEM Crew](http://bem.info/authors/)
+- [Jonathan Snook](http://smacss.com/book) - Author of SMACSS
+- [Harry Roberts](http://cssguidelin.es/)
