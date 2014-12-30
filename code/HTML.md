@@ -210,6 +210,7 @@ During the development phase &ndash; whitespace and comments are encouraged, whe
             <p> Content </p>
 
           </div>
+          
         </article>
         
       </section>
