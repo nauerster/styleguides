@@ -14,4 +14,4 @@ The main objective of these documents; is to expose some of today's Best Practic
 
 ### [JS](https://github.com/nauerster/styleguides/blob/master/code/JS.md)
 
-### [JS](https://github.com/nauerster/styleguides/blob/master/code/AngularJS.md)
+### [AngularJS](https://github.com/nauerster/styleguides/blob/master/code/AngularJS.md)
