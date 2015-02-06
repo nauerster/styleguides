@@ -12,7 +12,6 @@ The main objective of these documents; is to expose some of today's Best Practic
 
 ### [SASS](https://github.com/nauerster/styleguides/blob/master/code/SASS.md)
 
-### [LESS](https://github.com/nauerster/styleguides/blob/master/code/LESS.md)
-
 ### [JS](https://github.com/nauerster/styleguides/blob/master/code/JS.md)
 
+### [JS](https://github.com/nauerster/styleguides/blob/master/code/AngularJS.md)
