@@ -13,10 +13,10 @@ A CSS class for an element is a `block name` and an `element name` separated by 
 .menu
 
 // element
-.menu-item
+.menu__item
 
 // modifier
-.menu-list or menu-tabbed
+.menu--list or menu--tabbed
 
 ```
 
@@ -71,23 +71,35 @@ OR
 Used to store global & local values, which are leveraged through Mixins and other parts of your code.
 
 ```
-$color-theme			: rgba(88,195,240,1)
-$color-primary			: rgba(34,34,34,1)
-$color-secondary		: lighten($color-primary, 10)
+// Create some descriptive colors:
 
-$color-link				: rgba(16,187,241,1)
-$color-link-hover		: lighten($color-link, 10)
-$color-link-active		: darken($color-link, 10)
+$black                 : #000
+$gray                  : #C2C2C2
+$blue                  : #1C84C6
+
+// Set some core colors:
+
+$color__theme			: lighten($blue, 10%)
+$color__default			: $gray
+$color__primary			: darken($color__default, 10%)
+
+// Set some core color states:
+
+$color__link			: $blue
+$color__link--hover		: darken($color-link, 5%)
+$color__link--active	: darken($color-link, 10%)
+
+// Define some constants:
 
 $img-path				: 'folder/img/'
 
-$mobile-sm				: '(max-width: 240px)'
-$mobile-lg				: '(max-width: 320px)'
-$tablet-sm				: '(max-width: 480px)'
-$tablet-lg				: '(max-width: 768px)'
-$screen-sm				: '(max-width: 992px)'
-$screen-lg				: '(max-width: 1024px)'
-$screen-xl				: '(max-width: 1200px)'
+$media__mobile--sm		: '(max-width: 240px)'
+$media__mobile--lg		: '(max-width: 320px)'
+$media__tablet--sm		: '(max-width: 480px)'
+$media__tablet--lg		: '(max-width: 768px)'
+$media__screen--sm		: '(max-width: 992px)'
+$media__screen--lg		: '(max-width: 1024px)'
+$media__screen--xl		: '(max-width: 1200px)'
 
 ```
 
@@ -100,65 +112,76 @@ Appropriate when passing arguments
 
 *** SASS ***
 
-=position($position: 'rel')
-	@if $position == 'abs'
-		position: absolute
-	@else if $position == 'rel'
-		position: relative
-	@else if $position == 'fix'
-		position: fixed
+// Lets create a mixin for a common pattern seen when building out buttons 
+
+=button__skin($clr, $bg)
+  +transition(all 300ms linear)
+  color: $clr
+  border-color: darken($bg, 5%)
+  background-color: $bg
+  &:hover
+    color: darken($clr, 5%)
+    border-color: darken($bg, 10%)
+    background-color: darken($bg, 5%)
 		
 *** CSS ***
 
-.block
-	+position(abs)
+.btn
 
+	// add button styles here
+  
+  	// define modifier 
+	&--default
+    	+button__skin($white, $color__default)
+    
+*** CSS OUTPUT ***
 
-*** OUTPUT ***
-
-.block {
-	position: absolute;
+.btn--default {
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+  color: #FFF;
+  border-color: #7b7b7b;
+  background-color: #888888;
 }
 
 ```
 
-**Helpers:** Will extend common CSS properties to other selectors without adding the additional CSS Selector Property. 
+**Builders:** 
+
+Will extend common CSS properties to other selectors without adding the additional CSS Selector Property. 
 
 ```
 
-%icon {
+%icon
   transition: background-color ease .2s;
   margin: 0 .5em;
-}
 
-.error-icon {
-  @extend %icon;
+.icon--error
+  @extend %icon
   /* error specific styles... */
-}
 
-.info-icon {
-  @extend %icon;
+.icon--info
+  @extend %icon
   /* info specific styles... */
-}
-
-```
-
-
-**Modifiers:**
-
-Not to be confused with *Placeholders. Modifiers should only be used within the Mark-Up.
 
 
 ```
 
-.padding-tb-none
+**Helpers (Single Responsibilty Classes):**
+
+Not to be confused with *Placeholders. SRC's should only be used within the Mark-Up.
+
+
+```
+
+.ptb-none
 	padding-top: 0px !important
 	padding-bottom: 0px !important
 
-.pull
+.pull-left
 	float: left
 	
-.push
+.pull-right
 	float: right
 	
 .clearfix
@@ -173,7 +196,7 @@ Not to be confused with *Placeholders. Modifiers should only be used within the 
 ***Example:***
 
 ```
- <div class='pull'></div>
+ <div class='pull-left'></div>
 
 ```
 
@@ -182,21 +205,23 @@ Not to be confused with *Placeholders. Modifiers should only be used within the 
 ## Nesting
 
 
-Generally, you want to avoid nesting more than 3 level's deep. While in your SASS file it might make perfect sense, when compiled, those nested child element become baried in a string of selector's making your css bloated and unmanagable – especially when talking about specificity.
+Generally, you want to avoid nesting more than 3 level's deep. While in your SASS file it might make perfect sense, when compiled, those nested child element become buried in a string of selector's making your css bloated and unmanageable – especially when talking about specificity.
 
 When is it okay to use nesting?
 
 ```
 
 .element
+
   /* Some CSS declarations */
  
   &:hover,
   &:focus
+  
     /* More CSS declarations for hover/focus state */
 
- 
   &:before
+  
     /* Some CSS declarations for before pseudo-element */
 
 ```
@@ -217,9 +242,12 @@ Based off [SMACSS](http://smacss.com/book/categorizing) "By categorizing CSS rul
   |   |   |-- _base.sass                  # base styles
   |   |   |-- _normalize.scss             # normalize v3.0.1
   |   |   |-- _reset.sass                 # reset v0.0.1
+  |   |   |-- _helpers.sass               # single responsibilty classes 
+  |   |   |-- _typography.sass            # core typography rules   
   |   |
-  |   | + layout/                         # major components, e.g., header, footer etc.
+  |   | + layout/                         # major components, e.g., header, footer etc.  
   |   |   |-- _index.sass                 # imports for all layout styles
+  |   |   |-- _content.sass               # core content block's, e.g., .section, .container, .row, .content
   |   |   |-- _grid.sass                  # responsive grid system
   |   |   |-- _header.sass                # global header
   |   |   |-- _footer.sass                # global footer
@@ -227,6 +255,11 @@ Based off [SMACSS](http://smacss.com/book/categorizing) "By categorizing CSS rul
   |   | + modules/                        # minor components, e.g., buttons, widgets etc.
   |   |   |-- _index.sass                 # imports for all modules
   |   |   |-- _modal.sass                 # modal styles
+  |   |   |-- + buttons/                  # button directory consist of decorators  
+  |   |   |-- | _button.sass              # default build decorator
+  |   |   |-- | _button-states.sass       # button states decorator, i.e., primary, success, warning etc.
+  |   |   |-- | _button-sizes.sass        # button sizes decorators, e.g., small, large
+  |   |   |-- | _button-types.sass        # button variable decorators, e.g., outlined, squared etc.
   |   |
   |   | + states/                         # js-based classes, alternative states e.g., success or error state
   |   |   |-- _index.sass                 # imports for all state styles
@@ -239,8 +272,8 @@ Based off [SMACSS](http://smacss.com/book/categorizing) "By categorizing CSS rul
   |   |
   |   | + views/                          # (optional) separate view files
   |   |   |-- _index.sass                 # imports for all views styles
-  |   |   |-- _login.sass                 # specific view styles
-  |   |   |-- _dashboard.sass             # specific view styles
+  |   |   |-- _view1.sass                 # specific view styles
+  |   |   |-- _view2.sass                 # specific view styles
   |   |   |-- ...                         # more...
   |   |
   |   | + utilities/                      # non-CSS outputs (i.e. mixins, variables) & non-modules
@@ -248,11 +281,12 @@ Based off [SMACSS](http://smacss.com/book/categorizing) "By categorizing CSS rul
   |   |   |-- _fonts.sass                 # @font-face mixins
   |   |   |-- _functions.sass             # ems to rems conversion, etc.
   |   |   |-- _global.sass                # global variables
-  |   |   |-- _helpers.sass               # placeholder helper classes
+  |   |   |-- _builders.sass              # builder classes, i.e., extension classes
   |   |   |-- _mixins.sass                # media queries, CSS3, etc.
   |   |   |-- _lib.sass                   # imports for third party styles
   |   |   |-- + lib/                      # third party styles
   |   |       | _pesticide.scss           # CSS pesticide
+  |   |       | _animate.scss             # Cross-Browser animation library
   |   |
   |   |   + ie.sass                       # IE specific Sass file
   |   |   + styles.sass                   # primary Sass file
