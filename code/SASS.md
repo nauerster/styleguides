@@ -32,26 +32,60 @@ See [Styleguides > CSS](https://github.com/nauerster/styleguides) for more on .
 
 ```
 
+**States:**
+
+When modifying elements based on states, us the "is-state" pre-qualifier. 
+
+```
+
+.is-open,
+.is-visible,
+.is-expanded
+  display: block !important
+
+.is-closed,
+.is-hidden,
+.is-collaspsed
+  display: none !important
+
+
+```
+
 
 **Variables:**
 
 ```
+
+// Descriptive Name
+
 $variable
 
-OR
+// Namespace Variable
 
-$variable-name
+$namespace__variable
+
+// Namespace Modified Variable
+
+$namespace__variable--modifier
+
+// Example:
+
+$blue					: #1C84C6
+
+$color__primary			: $blue
+
+$color__primary--hover	: darken($color__primary, 10%)
 
 ```
 
 **Mixins:**
 
 ```
-=mixin
+=button
 
 OR
 
-=mixin-name
+=button__skin
 
 ```
 
