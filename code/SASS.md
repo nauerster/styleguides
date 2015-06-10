@@ -402,13 +402,11 @@ $img-path				: 'folder/img/'
  * Media Break Points
  */
 
-$media__mobile--sm		: '(max-width: 240px)'
-$media__mobile--lg		: '(max-width: 320px)'
-$media__tablet--sm		: '(max-width: 480px)'
-$media__tablet--lg		: '(max-width: 768px)'
-$media__screen--sm		: '(max-width: 992px)'
-$media__screen--lg		: '(max-width: 1024px)'
-$media__screen--xl		: '(max-width: 1200px)'
+$mobile                               : '(min-width: 321px)'
+$mobile-landscape                     : '(min-width: 480px)'
+$tablet                               : '(min-width: 768px)'
+$desktop                              : '(min-width: 992px)'
+$widescreen                           : '(min-width: 1200px)'
 
 
 ```
@@ -516,6 +514,56 @@ Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) sh
 
 ```
 
+
+#### Implementing BEM in a main navigation block
+
+```
+<nav class="nav" role="navigation" aria-label="primary">
+  <ul class="nav__list">
+    <li class="nav__list__item">
+      <a href="" class="nav__link"></a>
+    </li>
+    <li class="nav__list__item">
+      <a href="" class="nav__link--active"></a>
+    </li>
+    <li class="nav__list__item">
+      <a href="" class="nav__link"></a>
+    </li>
+  </ul>
+</nav>
+
+```
+
+##### We could then write our Sass like this
+
+```
+.nav
+
+  &__list
+
+    &__item
+
+  &__link
+
+    &--active
+    
+```
+
+##### Which would compile to...
+
+```
+.nav {
+}
+.nav__list {
+}
+.nav__list__item {
+}
+.nav__link {
+}
+.nav__link--active {
+}
+
+```
 
 
 ##Nesting
