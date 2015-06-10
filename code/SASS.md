@@ -388,7 +388,7 @@ $color__secondary--shaded             : shade($color__secondary, 5%)
  * States
  */
 
-$color__link			                    : $blue
+$color__link                          : $blue
 $color__link--hover		                : shade($color__link, 5%)
 $color__link--active	                : shade($color__link, 10%)
 
@@ -396,7 +396,7 @@ $color__link--active	                : shade($color__link, 10%)
  * Constants
  */
 
-$img-path				                      : 'folder/img/'
+$img-path                             : 'folder/img/'
 
 /*
  * Media Break Points
