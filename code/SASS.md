@@ -151,13 +151,13 @@ Allows developers to create a simple naming convention helping make your CSS mor
 
 In some ways, ** BEM ** is similar to **OOP** `(Object-Oriented Programming).` It's a way of describing reality in code, a range of `patterns,` and a way of thinking about program entities regardless of programming languages being used.
 
-** What constitutes BEM? **
+**What constitutes BEM?**
 
-- ** Block: ** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
+- **Block:** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
 
-- ** Element: ** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
+- **Element:** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
 
-- ** Modifier: ** A `modifier` is a property of a block or an element that alters its look or behavior.
+- **Modifier:** A `modifier` is a property of a block or an element that alters its look or behavior.
 
 ****
 
