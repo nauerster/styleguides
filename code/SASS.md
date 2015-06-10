@@ -396,7 +396,7 @@ $color__link--active	                : shade($color__link, 10%)
  * Constants
  */
 
-$img-path				                       : 'folder/img/'
+$img-path				                      : 'folder/img/'
 
 /*
  * Media Break Points
