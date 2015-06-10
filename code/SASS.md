@@ -364,9 +364,9 @@ Used to store global & local values, which are leveraged through Mixins and othe
  * Descriptive colors
  */
 
-$black                 : #000
-$gray                  : #C2C2C2
-$blue                  : #1C84C6
+$black                                : #000
+$gray                                 : #C2C2C2
+$blue                                 : #1C84C6
 
 /*
  * Theme colors
@@ -388,15 +388,15 @@ $color__secondary--shaded             : shade($color__secondary, 5%)
  * States
  */
 
-$color__link			: $blue
-$color__link--hover		: darken($color__link, 5%)
-$color__link--active	: darken($color__link, 10%)
+$color__link			                    : $blue
+$color__link--hover		                : shade($color__link, 5%)
+$color__link--active	                : shade($color__link, 10%)
 
 /*
  * Constants
  */
 
-$img-path				: 'folder/img/'
+$img-path				                       : 'folder/img/'
 
 /*
  * Media Break Points
@@ -534,7 +534,7 @@ Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) sh
 
 ```
 
-##### We could then write our Sass like this
+##### We could then write our Sass like this:
 
 ```
 .nav
