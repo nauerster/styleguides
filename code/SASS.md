@@ -34,19 +34,36 @@ You'll need to clone this repository so that its on your local computer.
 
 ```
 $ cd /path/to/your/repo
-$ git clone https://mnetpbldev@bitbucket.org/mnetpbldev/styleguide.git (HTTPS Method)
+$ git clone git@github.com:nauerster/styleguides.git (SSH Method)
+
+- or -
+
+$ git clone https://github.com/nauerster/styleguides.git (HTTP Method)
+
 
 ```
 
-#### Step 3: Know Your Git Commads
-* `git add -A`: stages all files to commit (locally)
-* `git commit -am "Commit message"`: commits all files with a description
-* `git push origin {branch name}`: push committed files to repository
+#### Step 3: Know Your Git Commands (High Level)
+
+* `git init`: creates a new git repository
+* `git add`: copies *files* (at their current state) to the stage
+* `git add -u`: stages modified and deleted files, but adds no new files
+* `git commit`: saves a snapshot of the staged files, as a commit to the HEAD
+* `git commit -m "Commit Message"`: same as above, but commits all files with a description
+* `git push origin {branch name}`: push committed files to the designated {branch} repository
 * `git branch {new branch}`: creates a new working branch
 * `git checkout branch`: switches you to your new branch
-* `git merge {branch name}` : will merge changes from the specified branch into your current branch 
+* `git checkout -b {new branch}`: creates a new branch and puts you in that branch
+* `git merge {branch name}` : will merge changes from the specified branch into your current branch
+
+**Additional Guides:**
+
+ - [Git Simple Guide](http://rogerdudler.github.io/git-guide/)
+ - [Visual Git Guide](http://marklodato.github.io/visual-git-guide/index-en.html)
+
 
 ## Fire It Up
+
 Follow these instructions to fire up your `Sass Plate` after ensuring you have all dependencies listed above installed in your environment.
 
 1. In terminal/Command line, navigate to the root directory (where Gruntfile.js is located)
@@ -80,16 +97,12 @@ In general, the CSS file organization should follow something like this:
   |   |   |-- _grid.sass                  # responsive grid system
   |   |   |-- _header.sass                # global header
   |   |   |-- _footer.sass                # global footer
-  |   |   |-- _variables.sass             #
+  |   |   |-- _variables.sass             # declare reusable specs
   |   |
-  |   | + modules/                        # minor components, e.g., buttons, widgets etc.
+  |   | + components/                     # minor components, e.g., buttons, widgets etc.
   |   |   |-- _index.sass                 # imports for all modules
   |   |   |-- _modal.sass                 # modal styles
-  |   |   |-- + buttons/                  # button directory consist of decorators
-  |   |   |-- | _button.sass              # default build decorator
-  |   |   |-- | _button-states.sass       # button states decorator, i.e., primary, success, warning etc.
-  |   |   |-- | _button-sizes.sass        # button sizes decorators, e.g., small, large
-  |   |   |-- | _button-types.sass        # button variable decorators, e.g., outlined, squared etc.
+  |   |   |-- _button.sass                # default build decorator
   |   |
   |   | + states/                         # js-based classes, alternative states e.g., success or error state
   |   |   |-- _index.sass                 # imports for all state styles
@@ -539,6 +552,10 @@ Generally, you want to avoid nesting more than 3 level's deep. While in your SAS
 ```
 
 
+
+## Scalable SASS Patterns
+
+- [Developer Guides - SASS Patterns](### [SASS](https://github.com/nauerster/developer-guides/blob/master/code/SassPatterns.md)
 
 ## Credits
 
