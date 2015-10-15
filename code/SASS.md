@@ -555,7 +555,7 @@ Generally, you want to avoid nesting more than 3 level's deep. While in your SAS
 
 ## Scalable SASS Patterns
 
-- [Developer Guides - SASS Patterns](https://github.com/nauerster/developer-guides/blob/master/code/SassPatterns.md)
+- [Developer Guides - SASS Patterns](https://github.com/nauerster/developer-guides/blob/master/code/SSP.md)
 
 ## Credits
 
