@@ -12,6 +12,7 @@ The main objective of this document is to expose some of today's Best Practices 
 4. [Methodologies & Principles](#methodologies-principles)
 5. [Code Guidelines](#code-guidelines)
 6. [Practical Examples](#practical-examples)
+7. [Scalable SASS Patterns](#scalable-sass-patterns)
 
 ## Getting Started
 
@@ -39,7 +40,6 @@ $ git clone git@github.com:nauerster/styleguides.git (SSH Method)
 - or -
 
 $ git clone https://github.com/nauerster/styleguides.git (HTTP Method)
-
 
 ```
 
@@ -164,13 +164,13 @@ Allows developers to create a simple naming convention helping make your CSS mor
 
 In some ways, ** BEM ** is similar to **OOP** `(Object-Oriented Programming).` It's a way of describing reality in code, a range of `patterns,` and a way of thinking about program entities regardless of programming languages being used.
 
-**What constitutes BEM?**
+** What constitutes BEM? **
 
-- **Block:** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
+- ** Block: ** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
 
-- **Element:** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
+- ** Element: ** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
 
-- **Modifier:** A `modifier` is a property of a block or an element that alters its look or behavior.
+- ** Modifier: ** A `modifier` is a property of a block or an element that alters its look or behavior.
 
 ****
 
@@ -377,9 +377,9 @@ Used to store global & local values, which are leveraged through Mixins and othe
  * Descriptive colors
  */
 
-$black                                : #000
-$gray                                 : #C2C2C2
-$blue                                 : #1C84C6
+$black                 : #000
+$gray                  : #C2C2C2
+$blue                  : #1C84C6
 
 /*
  * Theme colors
@@ -401,25 +401,27 @@ $color__secondary--shaded             : shade($color__secondary, 5%)
  * States
  */
 
-$color__link                          : $blue
-$color__link--hover                   : shade($color__link, 5%)
-$color__link--active                  : shade($color__link, 10%)
+$color__link			: $blue
+$color__link--hover		: darken($color__link, 5%)
+$color__link--active	: darken($color__link, 10%)
 
 /*
  * Constants
  */
 
-$img-path                             : 'folder/img/'
+$img-path				: 'folder/img/'
 
 /*
  * Media Break Points
  */
 
-$mobile                               : '(min-width: 321px)'
-$mobile-landscape                     : '(min-width: 480px)'
-$tablet                               : '(min-width: 768px)'
-$desktop                              : '(min-width: 992px)'
-$widescreen                           : '(min-width: 1200px)'
+$media__mobile--sm		: '(max-width: 240px)'
+$media__mobile--lg		: '(max-width: 320px)'
+$media__tablet--sm		: '(max-width: 480px)'
+$media__tablet--lg		: '(max-width: 768px)'
+$media__screen--sm		: '(max-width: 992px)'
+$media__screen--lg		: '(max-width: 1024px)'
+$media__screen--xl		: '(max-width: 1200px)'
 
 
 ```
@@ -528,56 +530,6 @@ Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) sh
 ```
 
 
-#### Implementing BEM in a main navigation block
-
-```
-<nav class="nav" role="navigation" aria-label="primary">
-  <ul class="nav__list">
-    <li class="nav__list__item">
-      <a href="" class="nav__link"></a>
-    </li>
-    <li class="nav__list__item">
-      <a href="" class="nav__link--active"></a>
-    </li>
-    <li class="nav__list__item">
-      <a href="" class="nav__link"></a>
-    </li>
-  </ul>
-</nav>
-
-```
-
-##### We could then write our Sass like this:
-
-```
-.nav
-
-  &__list
-
-    &__item
-
-  &__link
-
-    &--active
-    
-```
-
-##### Which would compile to...
-
-```
-.nav {
-}
-.nav__list {
-}
-.nav__list__item {
-}
-.nav__link {
-}
-.nav__link--active {
-}
-
-```
-
 
 ##Nesting
 
@@ -603,7 +555,7 @@ Generally, you want to avoid nesting more than 3 level's deep. While in your SAS
 
 ## Scalable SASS Patterns
 
-- [Developer Guides - SASS Patterns](### [SASS](https://github.com/nauerster/developer-guides/blob/master/code/SassPatterns.md)
+- [Developer Guides - SASS Patterns](https://github.com/nauerster/developer-guides/blob/master/code/SassPatterns.md)
 
 ## Credits
 
