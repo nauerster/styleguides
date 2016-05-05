@@ -158,19 +158,38 @@ In general, the CSS file organization should follow something like this:
 #### BEM: `Block`-`Element`-`Modifier`
 Allows developers to create a simple naming convention helping make your CSS more modular and portable.
 
-- Block: `the 'thing' - like a .menu`
-- Element: `a child of the block - like .menu-item`
-- Modifier: `a variation of the 'thing' - like .menu-vertical`
+- Block: represents the higher level of an abstraction or component (i.e., `the 'thing' - like a .menu`) 
+- Element: represents a descendent of `.block` that helps form `.block` as a whole (i.e., `a child of the block - like .menu__item`)
+- Modifier: represents a variation of the 'thing' (i.e., `a different state or version - like .menu--vertical`
 
-In some ways, ** BEM ** is similar to **OOP** `(Object-Oriented Programming).` It's a way of describing reality in code, a range of `patterns,` and a way of thinking about program entities regardless of programming languages being used.
+In some ways, **BEM** is similar to **OOP** `(Object-Oriented Programming).` It's a way of describing reality in code, a range of `patterns,` and a way of thinking about program entities regardless of programming languages being used.
 
-** What constitutes BEM? **
+**What constitutes BEM?**
 
-- ** Block: ** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
+- **Block:** A `block` is an independent entity, a "building block" of an application. A block can be either simple or compound (containing other blocks).
 
-- ** Element: ** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
+- **Element:** An `element` is a part of a block that performs a certain function. Elements are context-dependent: they only make sense in the context of the block they belong to.
 
-- ** Modifier: ** A `modifier` is a property of a block or an element that alters its look or behavior.
+- **Modifier:** A `modifier` is a property of a block or an element that alters its look or behavior.
+
+An **analogy** of how DEM classes work, might be:
+
+```css
+
+.person {}
+.person--man {}
+  .person__hand {}
+  .person__hand--left {}
+  .person__hand--right {}
+
+```
+
+The above example shows the basic object we’re describing is a person, and that a different type of person might be a man.
+That person also has hands, which are sub-parts of the person `object`. Those sub-parts are different, one is left, the other is right.  
+
+Using this approach, we can namespace our selectors based on their base objects and we can also communicate what job the selector does; is it a sub-component (__) or a variation (--)?
+
+
 
 ****
 
@@ -222,7 +241,7 @@ Want more? Visit: [DRY Out Your SASS](http://alistapart.com/article/dry-ing-out-
 
 Following the [BEM](http://bem.info/method/definitions/) naming convention.
 
-```
+```css
 /*
  * block
  */
@@ -284,7 +303,10 @@ Following the [BEM](http://bem.info/method/definitions/) naming convention.
 
 #### Modifiers:
 
-```
+Standalone modifiers don't form part of an abstraction or a component, therefore don't follow a particular pattern.
+
+```css
+
 .pad-tb-sm {
 	padding: 1rem 0; /* applies 16px padding to the Top and Bottom */
 }
@@ -295,7 +317,7 @@ Following the [BEM](http://bem.info/method/definitions/) naming convention.
 
 When modifying elements based on states, us the `is-state` pre-qualifier. 
 
-```
+```css
 .is-open
   display: block !important
 
@@ -306,7 +328,7 @@ When modifying elements based on states, us the `is-state` pre-qualifier.
 
 #### Variables:
 
-```
+```css
 /* 
  * Descriptive Name
  */
@@ -327,7 +349,7 @@ $namespace__variable--modifier
 ```
 
 
-```
+```css
 /*
  * Example:
  */
@@ -343,10 +365,10 @@ $color__primary--hover	: darken($color__primary, 10%)
 
 #### Mixins:
 
-```
+```css
 =button
 
-OR
+/* OR */
 
 =button-skin
 
@@ -355,10 +377,10 @@ OR
 #### Helpers:
 Also know as `Placeholders`
 
-```
+```css
 %foobar
 
-OR
+/* OR */
 
 %foo-bar
 
@@ -372,7 +394,7 @@ OR
 
 Used to store global & local values, which are leveraged through Mixins and other parts of your code.
 
-```
+```css
 /*
  * Descriptive colors
  */
@@ -431,7 +453,7 @@ $media__screen--xl		: '(max-width: 1200px)'
 
 Appropriate when passing arguments
 
-```
+```css
 
 /*
  * Lets create a mixin for a common pattern seen when building out buttons
@@ -473,9 +495,11 @@ Appropriate when passing arguments
 ```
 
 #### Helpers: 
+
 Will extend common CSS properties to other selectors without adding the additional CSS Selector Property.
 
-```
+
+```css
 %icon {
   transition: background-color ease .2s;
   margin: 0 .5em;
@@ -500,7 +524,7 @@ Will extend common CSS properties to other selectors without adding the addition
 Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) should only be used within the Mark-Up.
 
 
-```
+```css
 
 .pad-tb-none
 	padding-top: 0px !important
@@ -523,7 +547,7 @@ Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) sh
 
 **Example:**
 
-```
+```html
  <div class='content'>I have padding.</div>
  <div class='content pad-tb-none'>I don't have padding.</div>
 
@@ -538,7 +562,7 @@ Generally, you want to avoid nesting more than 3 level's deep. While in your SAS
 
 **When is it okay to use nesting?**
 
-```
+```css
 .element
   /* Some CSS declarations */
 
@@ -562,5 +586,4 @@ Generally, you want to avoid nesting more than 3 level's deep. While in your SAS
 
 - [BEM Crew](https://bem.info/)
 - [Scalable and Modular Architecture for CSS](http://smacss.com/book) (<abbr title="Scalable and Modular Architecture for CSS">SMACSS</abbr>) 
-
 
