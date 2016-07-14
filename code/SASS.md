@@ -76,10 +76,11 @@ Follow these instructions to fire up your `Sass Plate` after ensuring you have a
 
 
 ## File Organization
-In general, the CSS file organization should follow something like this:
 
-```
-  + app/
+> In general, the CSS file organization should follow something like this:
+
+```sh
+  + styles/
   |
   | + sass/
   |   |
@@ -97,7 +98,7 @@ In general, the CSS file organization should follow something like this:
   |   |   |-- _grid.sass                  # responsive grid system
   |   |   |-- _header.sass                # global header
   |   |   |-- _footer.sass                # global footer
-  |   |   |-- _variables.sass             # declare reusable specs
+  |   |   |-- _variables.sass             #
   |   |
   |   | + components/                     # minor components, e.g., buttons, widgets etc.
   |   |   |-- _index.sass                 # imports for all modules
@@ -128,7 +129,9 @@ In general, the CSS file organization should follow something like this:
   |   |       | _units.scss               # ems to rems conversion
   |   |       | _layout.scss              # width calculations and depth mapping
   |   |
-  |   |   |-- _global.sass                # global variables
+  |   |   |-- _config.sass                # config variables
+  |   |   |-- _colors.sass                # color variables
+  |   |   |-- _typography.sass            # typography variables
   |   |   |-- _helpers.sass               # extension classes
   |   |   |-- _mixins.sass                # media queries, CSS3, etc.
   |   |   |-- _lib.sass                   # imports for third party styles
@@ -136,27 +139,15 @@ In general, the CSS file organization should follow something like this:
   |   |       | _pesticide.scss           # CSS pesticide
   |   |       | _animate.scss             # Cross-Browser animation library
   |   |
-  |   |   + ie.sass                       # IE specific Sass file
   |   |   + styles.sass                   # primary Sass file
   |   |   + _shame.sass                   # because hacks happen
-  |
-  + node_modules/                         # repository for node modules 
-  + bower.json                            # use to install third party dependencies
-  + package.json                          # use to install grunt dependencies
-  + Gruntfile.js                          # used to configure your grunt tasks
-  + README.md                             # used to shared helpful information about the project
-  + .gitignore                            # used to ignore certain files and/or directories when push to remote repo
-  + .bowerrc                              # used to change the install location of your bower_components)
-  + config.rb                             # Compass configuration file (optional)
-  + Gruntfile.js                          # Grunt configuration & tasks
-  + package.json                          # Grunt metadata & dependencies
 
 ```
 
 ## Methodologies & Principles
 
 #### BEM: `Block`-`Element`-`Modifier`
-Allows developers to create a simple naming convention helping make your CSS more modular and portable.
+> Allows developers to create a simple naming convention helping make your CSS more modular and portable.
 
 - Block: represents the higher level of an abstraction or component (i.e., `the 'thing' - like a .menu`) 
 - Element: represents a descendent of `.block` that helps form `.block` as a whole (i.e., `a child of the block - like .menu__item`)
@@ -392,7 +383,7 @@ Also know as `Placeholders`
 
 #### Variables:
 
-Used to store global & local values, which are leveraged through Mixins and other parts of your code.
+> Used to store global & local values, which are leveraged through Mixins and other parts of your code.
 
 ```css
 /*
@@ -423,7 +414,7 @@ $color__secondary--shaded             : shade($color__secondary, 5%)
  * States
  */
 
-$color__link			: $blue
+$color__link          : $blue
 $color__link--hover		: darken($color__link, 5%)
 $color__link--active	: darken($color__link, 10%)
 
@@ -451,7 +442,7 @@ $media__screen--xl		: '(max-width: 1200px)'
 
 #### Mixins:
 
-Appropriate when passing arguments
+> Appropriate when passing arguments
 
 ```css
 
@@ -496,7 +487,7 @@ Appropriate when passing arguments
 
 #### Helpers: 
 
-Will extend common CSS properties to other selectors without adding the additional CSS Selector Property.
+> Will extend common CSS properties to other selectors without adding the additional CSS Selector Property.
 
 
 ```css
@@ -517,11 +508,63 @@ Will extend common CSS properties to other selectors without adding the addition
 
 ```
 
+> Potential use-cases for placeholders (i.e., helper classes)
+
+```css
+
+// Let's say I have a button component...
+%button
+  display: inline-block
+  padding: 1rem
+  border: 1px solid gray
+  color: black
+  background: #EFEFEF
+
+
+// And I have a button group component that stacks all buttons inside
+// and makes their backgrounds pink (for whatever reason)...
+%buttonGroup
+  display: block
+  border: 2px solid gray
+
+  
+  // Here is where the inner buttons are changed.
+  %button
+    display: block
+    background: pink
+
+//------------------------------------
+// In a separate file, far far away...
+//------------------------------------
+
+// I can change the selectors just in this place, and
+// the relationship between buttons and buttonGroups are preserved
+button, 
+input[type=button], 
+input[type=submit], 
+.button 
+  @extend %button
+
+.buttonGroup 
+  %buttonGroup
+
+#epilogue
+  content: 'Yes, placeholders have great potential to be misused, especially when it can easily be'
+  content: 'substituted for a @mixin, but using placeholders for RELATIONSHIPS between'
+  content: 'components is much, much simpler than using mixins.'
+
+
+``
+
+**More Info:**
+
+ - [Hugo Giraudel](https://www.sitepoint.com/avoid-sass-extend/) 
+
 
 
 #### Modifiers: (Single Responsibility Classes):
 
-Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) should only be used within the Mark-Up.
+> Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) should only be used within the Mark-Up.
 
 
 ```css
@@ -555,7 +598,7 @@ Not to be confused with `Placeholders`. SRC's (Single Responsibility Classes) sh
 
 
 
-##Nesting
+## Nesting
 
 
 Generally, you want to avoid nesting more than 3 level's deep. While in your SASS file it might make perfect sense, when compiled, those nested child element become buried in a string of selector's making your css bloated and unmanageable – especially when talking about specificity.
