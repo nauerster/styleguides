@@ -2,7 +2,6 @@
 
 The main objective of this document is to expose some of today's Best Practices as well as introduce techniques that will keep your code Consistent, Organized, and Scalable. 
 
-****
 
 ## Table of Content
 
