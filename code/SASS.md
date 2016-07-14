@@ -6,73 +6,18 @@ The main objective of this document is to expose some of today's Best Practices 
 
 ## Table of Content
 
-1. [Getting Started](#getting-started)
-2. [Fire It Up](#fire-it-up)
-3. [File Organization](#file-organization)
-4. [Methodologies & Principles](#methodologies-principles)
-5. [Code Guidelines](#code-guidelines)
-6. [Practical Examples](#practical-examples)
-7. [Scalable SASS Patterns](#scalable-sass-patterns)
-
-## Getting Started
-
-#### Step 1: Install Dependencies
-1. [node](http://nodejs.org/): follow the link and click the button
-2. [ruby](https://www.ruby-lang.org/en/installation/): this comes pre-installed on macs
-3. `gem install sass` & `gem install compass`
-4. `npm install grunt` & `npm install grunt-cli`: installs grunt and grunt-cli globally.
-5. `npm install -g bower` : installs bower globally (*optional*)
-
-**Note:**
-
- - Depending on your permissions setup, you might need to prefix each command with `sudo` (use with caution)
- - All user level installs: `cd ~` will put you at your user level
+1. [Documentation](#documentation)
+1. [File Organization](#file-organization)
+1. [Methodologies & Principles](#methodologies-principles)
+1. [Code Guidelines](#code-guidelines)
+1. [Practical Examples](#practical-examples)
 
 
-#### Step 2: Clone Project
+## Documentation
 
-You'll need to clone this repository so that its on your local computer.
+Using [SassDoc](http://http://sassdoc.com/), you can parse your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets enhanced and filtered before being passed to the view.
 
-```
-$ cd /path/to/your/repo
-$ git clone git@github.com:nauerster/styleguides.git (SSH Method)
-
-- or -
-
-$ git clone https://github.com/nauerster/styleguides.git (HTTP Method)
-
-```
-
-#### Step 3: Know Your Git Commands (High Level)
-
-* `git init`: creates a new git repository
-* `git add`: copies *files* (at their current state) to the stage
-* `git add -u`: stages modified and deleted files, but adds no new files
-* `git commit`: saves a snapshot of the staged files, as a commit to the HEAD
-* `git commit -m "Commit Message"`: same as above, but commits all files with a description
-* `git push origin {branch name}`: push committed files to the designated {branch} repository
-* `git branch {new branch}`: creates a new working branch
-* `git checkout branch`: switches you to your new branch
-* `git checkout -b {new branch}`: creates a new branch and puts you in that branch
-* `git merge {branch name}` : will merge changes from the specified branch into your current branch
-
-**Additional Guides:**
-
- - [Git Simple Guide](http://rogerdudler.github.io/git-guide/)
- - [Visual Git Guide](http://marklodato.github.io/visual-git-guide/index-en.html)
-
-
-## Fire It Up
-
-Follow these instructions to fire up your `Sass Plate` after ensuring you have all dependencies listed above installed in your environment.
-
-1. In terminal/Command line, navigate to the root directory (where Gruntfile.js is located)
-	* Install Node Modules: `npm install`
-
-2. In the same directory run the following command
-	* `grunt serve`: css file will be output into the dev folder. The watch task will continue to run until you quit it `(ctrl + c)`.
-	* `grunt build`: will run all the same dev tasks, but will compress our css file for final release.
-
+1. In Terminal/Command-line, simply run `grunt sassdoc` at the root of your project directory.
 
 
 ## File Organization
@@ -182,13 +127,13 @@ Using this approach, we can namespace our selectors based on their base objects 
 
 
 
-****
+
 
 #### OOCSS: `Object`-`Oriented`-`CSS`
 
 A scalable, maintainable, semantic, and predictable approach to writing CSS.
 
-****
+
 
 #### SMACSS: `Scalable`-`Modular`-`Architecture`*for*`CSS`
 
@@ -200,7 +145,7 @@ The basics of SMACSS:
  - State: override defaults or JS driven manipulations (e.g., .is-opened or .is-expanded)
  - Theme: optional, if theming is needed
 
-****
+
 
 #### DRY CSS: `Don't`-`Repeat`-`Your`-`CSS`
 
@@ -214,7 +159,7 @@ It comes down to 3 core principles.
 
 Want more? Visit: [DRY Out Your SASS](http://alistapart.com/article/dry-ing-out-your-sass-mixins)
 
-****
+
 
 #### LIFT: `Locating`-`Identify`-`Flat`-`Try to stay DRY`
 
@@ -223,7 +168,7 @@ Want more? Visit: [DRY Out Your SASS](http://alistapart.com/article/dry-ing-out-
 - Flat structure as long as we can
 - Try to stay DRY (Don’t Repeat Yourself)
 
-****
+
 
 ## Coding Guildlines
 
@@ -554,7 +499,7 @@ input[type=submit],
   content: 'components is much, much simpler than using mixins.'
 
 
-``
+```
 
 **More Info:**
 
